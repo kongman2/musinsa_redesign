@@ -1,0 +1,131 @@
+/* ===============================
+    Footer
+ ================================= */
+
+footer {
+   scroll-margin-top: 109px;
+   background-color: #f3f3f3;
+   height: 700px;
+   display: flex;
+   align-items: end;
+}
+.footer_section {
+   height: 500px;
+   width: 100%;
+   background-color: #1a1b1f;
+   padding: 40px 20px;
+   font-size: 13px;
+   color: #797979;
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+}
+.top_footer {
+   display: flex;
+   gap: 12px;
+   justify-content: center;
+   margin-bottom: 24px;
+}
+.top_footer img {
+   width: 50px;
+}
+
+.mid_footer {
+   margin-bottom: 50px;
+}
+.mid_footer ul {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 40px;
+   justify-content: center;
+}
+.mid_footer ul li {
+   max-width: 300px;
+}
+
+.mid_footer ul > li > ul {
+   display: none;
+   transition: max-height 0.3s ease;
+}
+.mid_footer ul > li.active > ul {
+   display: block;
+}
+.mid_footer ul > li > p {
+   cursor: pointer;
+   font-weight: bold;
+   padding: 10px 0;
+   position: relative;
+   width: 110px;
+   display: flex;
+   justify-content: center;
+   overflow: hidden;
+}
+.mid_footer ul > li > p::after {
+   content: '';
+   background-image: url(../images/footer_arrow_icon.png);
+   position: absolute;
+   right: 0;
+   transition: transform 0.3s ease;
+   margin-left: 10px;
+}
+.mid_footer ul > li.active > p::after {
+   transform: rotate(180deg);
+}
+
+.bottom_footer {
+   text-align: center;
+   margin-top: 30px;
+}
+.bottom_footer ul {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+   .footer,
+   .footer_section {
+      width: 100% !important;
+   }
+   .footer_section {
+      height: 700px;
+      justify-content: center;
+   }
+
+   .top_footer {
+      flex-wrap: wrap;
+   }
+}
+
+@media (max-width: 390px) {
+   .top_footer {
+      display: none;
+   }
+
+   .mid_footer ul {
+      flex-direction: column;
+   }
+}
+
+/* top버튼 */
+
+.scroll-top-btn {
+   position: fixed;
+   bottom: 40px;
+   right: 40px;
+   padding: 15px 15px;
+   font-size: 18px;
+   border: none;
+   border-radius: 50%;
+   background-color: #fff;
+   color: #1a1b1f;
+   cursor: pointer;
+   display: none;
+   z-index: 999;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   transition: opacity 0.3s ease;
+}
+.scroll-top-btn.show {
+   display: block;
+}

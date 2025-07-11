@@ -1,0 +1,378 @@
+/* ---------------------
+HEADER
+---------------------- */
+
+header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 3000;
+   background-color: #1a1b1f;
+   color: #f3f3f3;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.top-nav {
+   display: flex;
+   justify-content: space-between;
+   font-size: 12px;
+   padding: 10px 0;
+}
+.left-menu,
+.right-menu {
+   display: flex;
+   gap: 16px;
+}
+
+.left-menu li,
+.right-menu li {
+   font-size: 15px;
+}
+
+.gnb {
+   display: flex;
+   justify-content: space-between;
+   gap: 10px;
+   padding: 16px 0;
+}
+.logo img {
+   height: 35px;
+}
+.header-icons {
+   width: 80%;
+   display: flex;
+   justify-content: end;
+   gap: 10px;
+}
+.header-icons img {
+   height: 25px;
+}
+/* 검색창 */
+.search-row {
+   display: none;
+}
+.search-btn {
+   background: none;
+   border: none;
+   font-size: 16px;
+   cursor: pointer;
+}
+.header-icons {
+   position: relative;
+}
+/* 검색 슬라이드 기본 상태 */
+.search-slide {
+   width: 90%;
+   position: absolute;
+   top: 50%;
+   right: 52px;
+   transform: translateY(-50%) scaleX(0);
+   transform-origin: right;
+   background: #f3f3f3;
+   border: 1px solid #1a1b1f;
+   border-radius: 5px;
+   padding: 3px 10px;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   opacity: 0;
+   transition: transform 0.7s ease;
+   pointer-events: none;
+   z-index: 999;
+}
+
+.search-slide input {
+   background: #f3f3f3;
+   border: none;
+   outline: none;
+   width: 95%;
+   font-size: 14px;
+}
+.search-slide .close-search-btn {
+   background: none;
+   border: none;
+   font-size: 20px;
+   color: #ddd;
+   cursor: pointer;
+}
+/* 보여질 때 */
+.search-slide.show {
+   transform: translateY(-50%) scaleX(1);
+   opacity: 1;
+   pointer-events: auto;
+}
+
+/* 검색 버튼 숨김 */
+#searchToggleBtn.hide {
+   display: none;
+}
+
+/* ---------------------
+menu 모달창
+---------------------- */
+
+/* 햄버거 버튼 */
+#hamburgerBtn {
+   background: none;
+   border: none;
+   cursor: pointer;
+}
+#hamburgerBtn img {
+   width: 42px;
+   height: 28px;
+}
+/* 모달 전체 래퍼 */
+.modal-wrapper {
+   display: none;
+   position: fixed;
+   inset: 0;
+   z-index: 2000;
+}
+.modal-wrapper.show {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.modal-wrapper .overlay {
+   position: absolute;
+   inset: 0;
+   background: rgba(0, 0, 0, 0.5);
+}
+
+/* 모달 본체 */
+.modal.centered {
+   position: relative;
+   z-index: 2;
+   width: 90%;
+   max-width: 1000px;
+   overflow: hidden;
+   background: #fff;
+   border-radius: 10px;
+   animation: fadeIn 0.3s ease;
+   color: #1a1b1f;
+   display: flex;
+   flex-direction: column;
+}
+.modal-inner {
+   padding: 20px;
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+}
+
+.modal-close {
+   position: absolute;
+   top: 10px;
+   right: 16px;
+   font-size: 22px;
+   background: none;
+   border: none;
+   cursor: pointer;
+}
+/* 탭 버튼 상단 고정 */
+.tabs {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   border-bottom: 1px solid #ddd;
+   position: sticky;
+   top: 0;
+   background: #fff;
+   z-index: 1;
+}
+.tab {
+   font-size: 16px;
+   padding: 8px 16px;
+   border: none;
+   background: none;
+   cursor: pointer;
+}
+.tab.active {
+   font-weight: bold;
+
+   border-bottom: 2px solid #1a1b1f;
+}
+/* name 리스트 */
+.menu-header-list {
+   border-bottom: 1px solid #ddd;
+   list-style: none;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin-bottom: 20px;
+   overflow-y: auto;
+}
+
+.menu-header-list .active-name {
+   font-weight: bold;
+   border-bottom: 2px solid #1a1b1f;
+}
+
+.menu-header-list li {
+   cursor: pointer;
+   font-size: 15px;
+   padding: 12px;
+   color: #1a1b1f;
+}
+.menu-header-list li:hover {
+   border-bottom: 2px solid #1a1b1f;
+}
+/* children 카드 영역 */
+/* 카드 리스트 영역 (스크롤 허용) */
+#hoverCards {
+   flex: 1;
+   overflow-y: auto;
+   padding-right: 4px;
+   max-height: 300px; /* 카드 영역 고정 높이 */
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   padding: 10px 0;
+   scroll-behavior: smooth;
+}
+
+#hoverCards::-webkit-scrollbar {
+   display: none;
+}
+
+.hover-card-wrapper {
+   position: relative;
+   display: flex;
+   align-items: center;
+}
+
+/* 버튼을 카드 좌우에 배치 */
+.slide-prev,
+.slide-next {
+   all: unset;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   z-index: 10;
+   width: 32px;
+   height: 32px;
+   cursor: pointer;
+}
+.slide-prev {
+   left: -10px;
+}
+.slide-next {
+   right: -10px;
+}
+
+.hover-card-list {
+   margin-top: 20px;
+   display: flex;
+   gap: 12px;
+   justify-content: center;
+   align-items: center;
+}
+
+.hover-card-list.active {
+   display: flex;
+}
+.hover-card {
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   border-radius: 8px;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+   transition: transform 0.2s ease;
+}
+.hover-card:hover {
+   transform: translateY(-4px);
+}
+
+.hover-card div {
+   width: 120px;
+   background-color: #f3f3f3;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.hover-card div img {
+   width: 50px;
+   height: 50px;
+   object-fit: contain;
+   margin-bottom: 6px;
+}
+.hover-card p {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   font-size: 14px;
+   color: #333;
+   margin: 0;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: scale(0.95);
+   }
+   to {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+
+/* ===============================
+    반응형
+ ================================= */
+
+@media (max-width: 768px) {
+   .header-icons {
+      width: 100%;
+   }
+
+   nav .container {
+      flex-direction: column;
+      gap: 10px;
+   }
+   nav ul {
+      flex-direction: column;
+      gap: 8px;
+   }
+
+   .pc-search {
+      display: none;
+   }
+   .search-row .hot-label img {
+      border-radius: 20px;
+      border-radius: 0.5px soild #1a1b1f;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+   }
+   .search-row {
+      margin: 20px;
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 8px;
+      border-radius: 6px;
+      color: #1a1b1f;
+   }
+   .search-row span {
+      margin-right: 20px;
+   }
+   .search-row input {
+      flex: 1;
+      border: none;
+      padding: 6px;
+      font-size: 14px;
+      outline: none;
+   }
+
+   .top-nav {
+      display: none;
+   }
+   .gnb {
+      flex-direction: column;
+      align-items: flex-start;
+   }
+}
