@@ -1,14 +1,11 @@
-/* ===============================
-    Footer
- ================================= */
-
+/* 전체 푸터 영역 */
 footer {
    scroll-margin-top: 109px;
    background-color: #f3f3f3;
-   height: 700px;
    display: flex;
-   align-items: end;
+   align-items: flex-end;
 }
+/* 푸터 콘텐츠 */
 .footer_section {
    height: 500px;
    width: 100%;
@@ -18,8 +15,9 @@ footer {
    color: #797979;
    display: flex;
    flex-direction: column;
-   justify-content: start;
+   justify-content: flex-start;
 }
+/* 상단 브랜드 아이콘 */
 .top_footer {
    display: flex;
    gap: 12px;
@@ -29,49 +27,72 @@ footer {
 .top_footer img {
    width: 50px;
 }
-
+/* 중간 푸터 정보 */
 .mid_footer {
    margin-bottom: 50px;
+   width: 100%;
 }
 .mid_footer ul {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 40px;
-   justify-content: center;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
 }
 .mid_footer ul li {
-   max-width: 300px;
+   width: 100%;
 }
-
+/* 아코디언 기본 상태: 닫힘  */
 .mid_footer ul > li > ul {
    display: none;
-   transition: max-height 0.3s ease;
+   transition: all 0.3s ease;
 }
+/* 열렸을 때 */
 .mid_footer ul > li.active > ul {
    display: block;
 }
-.mid_footer ul > li > p {
-   cursor: pointer;
-   font-weight: bold;
-   padding: 10px 0;
-   position: relative;
-   width: 110px;
-   display: flex;
-   justify-content: center;
-   overflow: hidden;
-}
+
+/* + 아이콘 */
 .mid_footer ul > li > p::after {
-   content: '';
-   background-image: url(../images/footer_arrow_icon.png);
-   position: absolute;
-   right: 0;
-   transition: transform 0.3s ease;
-   margin-left: 10px;
+   content: '＋';
+   font-size: 16px;
+   margin-left: auto;
+   transition: transform 0.2s ease;
 }
+/* - 아이콘 (열렸을 때) */
 .mid_footer ul > li.active > p::after {
-   transform: rotate(180deg);
+   content: '－';
 }
 
+/* 제목 스타일 + 아코디언 토글 아이콘 */
+.mid_footer ul > li > p {
+   cursor: pointer;
+   padding: 10px 20px;
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.mid_footer ul > li > ul > li {
+   padding: 0 20px;
+}
+.mid_footer ul > li > ul > li > p::after {
+   content: none;
+   padding: 0px;
+}
+
+.mid_footer ul > li > ul > li.active > p::after {
+   content: none;
+   padding: 0px;
+}
+
+.mid_footer ul > li > ul > li > p {
+   padding: 10px 0px;
+}
+
+.mid_footer ul > li > p > ul {
+   max-height: 250px;
+}
+
+/* 하단 푸터 */
 .bottom_footer {
    text-align: center;
    margin-top: 30px;
@@ -82,50 +103,48 @@ footer {
    gap: 10px;
    margin: 10px 0;
 }
-
+/* 반응형 */
 @media (max-width: 768px) {
    .footer,
    .footer_section {
       width: 100% !important;
    }
    .footer_section {
-      height: 700px;
+      height: auto;
       justify-content: center;
    }
-
    .top_footer {
       flex-wrap: wrap;
    }
-}
+   .mid_footer ul {
+      grid-template-columns: none;
+   }
 
+   .mid_footer ul li {
+      width: 100%;
+      max-width: 700px;
+   }
+   .mid_footer ul > li > p {
+      font-size: 13px;
+      padding: 10px 0;
+   }
+   .mid_footer ul > li > ul {
+      padding-bottom: 20px;
+   }
+
+   .mid_footer ul > li > ul > li > p,
+   .mid_footer ul > li > ul > li > a,
+   .mid_footer ul > li > ul > li {
+      font-size: 10px;
+   }
+
+   .bottom_footer > p,
+   .bottom_footer > ul > li > a {
+      font-size: 10px;
+   }
+}
 @media (max-width: 390px) {
    .top_footer {
       display: none;
    }
-
-   .mid_footer ul {
-      flex-direction: column;
-   }
-}
-
-/* top버튼 */
-
-.scroll-top-btn {
-   position: fixed;
-   bottom: 40px;
-   right: 40px;
-   padding: 15px 15px;
-   font-size: 18px;
-   border: none;
-   border-radius: 50%;
-   background-color: #fff;
-   color: #1a1b1f;
-   cursor: pointer;
-   display: none;
-   z-index: 999;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-   transition: opacity 0.3s ease;
-}
-.scroll-top-btn.show {
-   display: block;
 }

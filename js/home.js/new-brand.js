@@ -1,0 +1,165 @@
+import { Products as RawProducts } from '../json-data.js'
+import { brandData } from '../json-data.js'
+const brandTabs = document.getElementById('brandTabs')
+const tabDot = document.getElementById('tabDot')
+const productTrack = document.getElementById('productTrack')
+const productDots = document.getElementById('productDots')
+const thumbTrack = document.getElementById('thumbTrack')
+const thumbDots = document.getElementById('thumbDots')
+let currentBrand = 0
+let currentProductSlide = 0
+let currentThumbSlide = 0
+let productInterval, thumbInterval
+// 1. 브랜드별로 그룹화된 Products 만들기
+function groupProductsByBrand(data) {
+   const filtered = data.filter((item) => item.tab === '상품')
+   const brandMap = {}
+   filtered.forEach((item) => {
+      if (!brandMap[item.brand]) {
+         brandMap[item.brand] = []
+      }
+      brandMap[item.brand].push(item)
+   })
+   return Object.entries(brandMap).map(([brand, items]) => ({
+      name: brand,
+      products: items,
+   }))
+}
+const Products = groupProductsByBrand(RawProducts) // :반복: 변환 적용
+// 2. 브랜드 탭 렌더링
+function renderTabs() {
+   brandTabs.innerHTML = ''
+   Products.forEach((brand, index) => {
+      const tab = document.createElement('div')
+      tab.className = 'brand-tab'
+      tab.textContent = brand.name
+      tab.addEventListener('click', () => switchBrand(index))
+      if (index === 0) tab.classList.add('active')
+      brandTabs.appendChild(tab)
+   })
+   const dot = document.createElement('div')
+   dot.className = 'tab-dot'
+   dot.id = 'tabDot'
+   brandTabs.appendChild(dot)
+   setTimeout(updateTabDot, 0)
+}
+function updateTabDot() {
+   const activeTab = document.querySelector('.brand-tab.active')
+   if (!activeTab) return
+   const offsetLeft = activeTab.offsetLeft
+   const dot = document.getElementById('tabDot')
+   dot.style.left = `${offsetLeft - 10}px`
+}
+// 3. 브랜드 변경 처리
+function switchBrand(index) {
+   document.querySelectorAll('.brand-tab').forEach((tab) => tab.classList.remove('active'))
+   brandTabs.children[index].classList.add('active')
+   currentBrand = index
+   currentProductSlide = 0
+   currentThumbSlide = 0
+   renderProductSlides()
+   renderThumbSlides()
+   updateTabDot()
+}
+// 4. 상품 카드 슬라이드 렌더링
+function renderProductSlides() {
+   const products = Products[currentBrand].products
+   productTrack.innerHTML = ''
+   productDots.innerHTML = ''
+   products.forEach((item) => {
+      const card = document.createElement('div')
+      card.className = 'product-card'
+      card.innerHTML = `
+      <div>
+        <a href="./productdetail.html?id=${item.id}" >
+          <img src="${item.img}" alt="${item.name}">
+          <p>${item.name}</p>
+          <div class="price" >
+            <span style="color: red" class="sale">${item.discount}</span>
+            <span class="amount">${item.price}</span>
+          </div>
+        </a>
+      </div>
+    `
+      productTrack.appendChild(card)
+   })
+   const slidesCount = Math.ceil(products.length / 3)
+   for (let i = 0; i < slidesCount; i++) {
+      const dot = document.createElement('span')
+      dot.className = 'dot'
+      if (i === 0) dot.classList.add('active')
+      dot.addEventListener('click', () => {
+         currentProductSlide = i
+         updateProductSlide()
+      })
+      productDots.appendChild(dot)
+   }
+   currentProductSlide = 0
+   updateProductSlide()
+   clearInterval(productInterval)
+   productInterval = setInterval(() => {
+      currentProductSlide = (currentProductSlide + 1) % slidesCount
+      updateProductSlide()
+   }, 4000)
+}
+// 5. 썸네일 슬라이드 (샘플 대체 가능)
+function renderThumbSlides() {
+   const brandName = Products[currentBrand].name // 현재 브랜드 이름
+   const brandThumb = brandData.find((b) => b.name === brandName)
+   if (!brandThumb || !brandThumb.thumbnails) {
+      thumbTrack.innerHTML = '<p>썸네일 없음</p>'
+      thumbDots.innerHTML = ''
+      return
+   }
+   const thumbs = brandThumb.thumbnails
+   thumbTrack.innerHTML = ''
+   thumbDots.innerHTML = ''
+   thumbs.forEach((item, i) => {
+      const thumb = document.createElement('div')
+      thumb.className = 'thumb-card'
+      thumb.innerHTML = `
+      <a href="#">
+        <img src="${item.img}" alt="썸네일${i + 1}">
+      </a>
+    `
+      thumbTrack.appendChild(thumb)
+      const dot = document.createElement('span')
+      dot.className = 'dot'
+      if (i === 0) dot.classList.add('active')
+      dot.addEventListener('click', () => {
+         currentThumbSlide = i
+         updateThumbSlide()
+      })
+      thumbDots.appendChild(dot)
+   })
+   updateThumbSlide()
+   clearInterval(thumbInterval)
+   thumbInterval = setInterval(() => {
+      currentThumbSlide = (currentThumbSlide + 1) % thumbs.length
+      updateThumbSlide()
+   }, 3000)
+}
+// 6. 슬라이드 이동
+function updateProductSlide() {
+   const card = productTrack.querySelector('.product-card')
+   if (!card) return
+   const cardWidth = card.offsetWidth + parseInt(getComputedStyle(card).marginRight || 0)
+   const slideWidth = cardWidth * 3
+   productTrack.style.transform = `translateX(-${slideWidth * currentProductSlide}px)`
+   document.querySelectorAll('#productDots .dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentProductSlide)
+   })
+}
+function updateThumbSlide() {
+   const width = thumbTrack.offsetWidth
+   thumbTrack.style.transform = `translateX(-${width * currentThumbSlide}px)`
+   document.querySelectorAll('#thumbDots .dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentThumbSlide)
+   })
+}
+// 7. 초기 실행
+window.addEventListener('load', () => {
+   renderTabs()
+   switchBrand(0)
+})
+window.addEventListener('resize', updateTabDot)

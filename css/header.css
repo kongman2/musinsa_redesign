@@ -11,6 +11,7 @@ header {
    background-color: #1a1b1f;
    color: #f3f3f3;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+   padding: 0 20px;
 }
 
 .top-nav {
@@ -33,20 +34,15 @@ header {
 .gnb {
    display: flex;
    justify-content: space-between;
-   gap: 10px;
+   align-items: center;
    padding: 16px 0;
 }
 .logo img {
    height: 35px;
 }
-.header-icons {
-   width: 80%;
-   display: flex;
-   justify-content: end;
-   gap: 10px;
-}
+
 .header-icons img {
-   height: 25px;
+   height: 28px;
 }
 /* 검색창 */
 .search-row {
@@ -60,10 +56,10 @@ header {
 }
 .header-icons {
    position: relative;
+   gap: 10px;
 }
 /* 검색 슬라이드 기본 상태 */
 .search-slide {
-   width: 90%;
    position: absolute;
    top: 50%;
    right: 52px;
@@ -86,7 +82,6 @@ header {
    background: #f3f3f3;
    border: none;
    outline: none;
-   width: 95%;
    font-size: 14px;
 }
 .search-slide .close-search-btn {
@@ -108,10 +103,9 @@ header {
    display: none;
 }
 
-/* ---------------------
-menu 모달창
+/* ----------------------
+menu 모달창 공통 스타일
 ---------------------- */
-
 /* 햄버거 버튼 */
 #hamburgerBtn {
    background: none;
@@ -120,14 +114,13 @@ menu 모달창
 }
 #hamburgerBtn img {
    width: 42px;
-   height: 28px;
 }
-/* 모달 전체 래퍼 */
+/* 모달 래퍼 */
 .modal-wrapper {
    display: none;
    position: fixed;
    inset: 0;
-   z-index: 2000;
+   z-index: 4000;
 }
 .modal-wrapper.show {
    display: flex;
@@ -139,14 +132,12 @@ menu 모달창
    inset: 0;
    background: rgba(0, 0, 0, 0.5);
 }
-
 /* 모달 본체 */
 .modal.centered {
    position: relative;
    z-index: 2;
-   width: 90%;
+   width: 70%;
    max-width: 1000px;
-   overflow: hidden;
    background: #fff;
    border-radius: 10px;
    animation: fadeIn 0.3s ease;
@@ -161,7 +152,7 @@ menu 모달창
    flex-direction: column;
    overflow: hidden;
 }
-
+/* 모달 닫기 버튼 */
 .modal-close {
    position: absolute;
    top: 10px;
@@ -170,8 +161,9 @@ menu 모달창
    background: none;
    border: none;
    cursor: pointer;
+   z-index: 2;
 }
-/* 탭 버튼 상단 고정 */
+/* 탭 버튼 */
 .tabs {
    display: flex;
    justify-content: center;
@@ -191,7 +183,6 @@ menu 모달창
 }
 .tab.active {
    font-weight: bold;
-
    border-bottom: 2px solid #1a1b1f;
 }
 /* name 리스트 */
@@ -202,98 +193,55 @@ menu 모달창
    flex-wrap: wrap;
    justify-content: center;
    margin-bottom: 20px;
-   overflow-y: auto;
 }
-
-.menu-header-list .active-name {
-   font-weight: bold;
-   border-bottom: 2px solid #1a1b1f;
-}
-
 .menu-header-list li {
    cursor: pointer;
    font-size: 15px;
    padding: 12px;
    color: #1a1b1f;
 }
-.menu-header-list li:hover {
+.menu-header-list li:hover,
+.menu-header-list .active-name {
+   font-weight: bold;
    border-bottom: 2px solid #1a1b1f;
 }
-/* children 카드 영역 */
-/* 카드 리스트 영역 (스크롤 허용) */
+/* 카드 영역 */
 #hoverCards {
-   flex: 1;
+   width: 100%;
+   padding: 10px;
    overflow-y: auto;
-   padding-right: 4px;
-   max-height: 300px; /* 카드 영역 고정 높이 */
-   display: flex;
-   align-items: center;
-   gap: 12px;
-   padding: 10px 0;
-   scroll-behavior: smooth;
+   max-height: 550px;
 }
-
-#hoverCards::-webkit-scrollbar {
-   display: none;
-}
-
-.hover-card-wrapper {
-   position: relative;
-   display: flex;
-   align-items: center;
-}
-
-/* 버튼을 카드 좌우에 배치 */
-.slide-prev,
-.slide-next {
-   all: unset;
-   position: absolute;
-   top: 50%;
-   transform: translateY(-50%);
-   z-index: 10;
-   width: 32px;
-   height: 32px;
-   cursor: pointer;
-}
-.slide-prev {
-   left: -10px;
-}
-.slide-next {
-   right: -10px;
-}
-
+/* 카드 리스트: PC 기준 4열 */
 .hover-card-list {
-   margin-top: 20px;
-   display: flex;
-   gap: 12px;
-   justify-content: center;
-   align-items: center;
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   gap: 16px;
 }
-
-.hover-card-list.active {
-   display: flex;
-}
+/* 카드 */
 .hover-card {
    display: flex;
    justify-content: center;
    text-align: center;
+   align-items: center;
    border-radius: 8px;
    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
    transition: transform 0.2s ease;
+   background-color: #f3f3f3;
+   height: 120px;
 }
 .hover-card:hover {
    transform: translateY(-4px);
 }
-
 .hover-card div {
-   width: 120px;
+   width: 100%;
+   height: 100%;
    background-color: #f3f3f3;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
 }
-
 .hover-card div img {
    width: 50px;
    height: 50px;
@@ -301,15 +249,16 @@ menu 모달창
    margin-bottom: 6px;
 }
 .hover-card p {
-   display: flex;
-   justify-content: center;
-   align-items: center;
    text-align: center;
    font-size: 14px;
    color: #333;
    margin: 0;
 }
-
+/* 슬라이드 버튼 제거 */
+.slide-prev,
+.slide-next {
+   display: none !important;
+}
 /* 애니메이션 */
 @keyframes fadeIn {
    from {
@@ -331,18 +280,10 @@ menu 모달창
       width: 100%;
    }
 
-   nav .container {
-      flex-direction: column;
-      gap: 10px;
-   }
-   nav ul {
-      flex-direction: column;
-      gap: 8px;
-   }
-
    .pc-search {
       display: none;
    }
+
    .search-row .hot-label img {
       border-radius: 20px;
       border-radius: 0.5px soild #1a1b1f;
@@ -371,8 +312,49 @@ menu 모달창
    .top-nav {
       display: none;
    }
-   .gnb {
-      flex-direction: column;
-      align-items: flex-start;
+
+   .gnb .header-icons {
+      display: flex;
+      justify-content: end;
+   }
+
+   /* 모달 → 전체 페이지로 보이게 */
+   .modal-wrapper {
+      margin-top: 72px;
+      position: static;
+      width: 100vw;
+      height: 100vh;
+      z-index: auto;
+      display: none;
+   }
+
+   .modal-wrapper.show {
+      display: block;
+   }
+
+   .modal.centered {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      animation: none;
+      position: fixed;
+   }
+   .modal-inner {
+      padding: 16px;
+      height: 100%;
+      overflow-y: auto;
+   }
+   .modal-wrapper .overlay {
+      display: none;
+   }
+   /* 카드 리스트: 모바일 3열 */
+   .hover-card-list {
+      grid-template-columns: repeat(3, 1fr);
+   }
+   .hover-card {
+      height: auto;
+   }
+   .hover-card div {
+      padding: 12px 0;
    }
 }

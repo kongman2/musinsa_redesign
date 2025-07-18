@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+   initScrollDownButton()
+   initSectionWheelScroll()
+   initScrollToTopButton()
+})
+// :별: 배너에서 타임세일로 이동 버튼
+function initScrollDownButton() {
    const scrollBtn = document.querySelector('.scroll-down-btn')
    const targetSection = document.querySelector('.time-sale')
    if (scrollBtn && targetSection) {
@@ -11,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
          })
       })
    }
+}
+// :별: 섹션 간 휠 스크롤 이동
+function initSectionWheelScroll() {
    const headerHeight = 109
    const sections = Array.from(document.querySelectorAll('main section')).filter((section) => !section.classList.contains('coupon'))
    const footer = document.querySelector('footer')
@@ -18,22 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
    let currentIndex = 0
    let isScrolling = false
    let enterTimer = null
-   // 마우스 섹션 진입 시 지연된 스크롤
+   // 마우스 hover 시 해당 섹션으로 부드럽게 이동
    sections.forEach((section, index) => {
       section.addEventListener('mouseenter', () => {
          if (isScrolling) return
-         clearTimeout(enterTimer) // 이전 타이머 제거
+         clearTimeout(enterTimer)
          enterTimer = setTimeout(() => {
             const scrollTop = section.offsetTop - headerHeight
             window.scrollTo({ top: scrollTop, behavior: 'smooth' })
             currentIndex = index
-         }, 300) // 300ms 이상 머물러야 스크롤
+         }, 300)
       })
       section.addEventListener('mouseleave', () => {
          clearTimeout(enterTimer)
       })
    })
-   //  휠 스크롤
+   // 휠로 섹션 간 이동
    window.addEventListener(
       'wheel',
       (e) => {
@@ -50,11 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       { passive: true }
    )
-})
-
-document.addEventListener('DOMContentLoaded', () => {
+}
+// :별: 맨 위로 이동 버튼
+function initScrollToTopButton() {
    const scrollToTopBtn = document.getElementById('scrollToTopBtn')
-   // 스크롤 감지해서 버튼 보여주기
    window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
          scrollToTopBtn.classList.add('show')
@@ -62,11 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
          scrollToTopBtn.classList.remove('show')
       }
    })
-   // 버튼 클릭 시 맨 위로 이동
    scrollToTopBtn.addEventListener('click', () => {
       window.scrollTo({
          top: 0,
          behavior: 'smooth',
       })
    })
-})
+}
