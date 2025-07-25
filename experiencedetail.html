@@ -6,7 +6,7 @@
       <title>MUSINSA</title>
       <link rel="stylesheet" href="./css/style.css" />
       <link rel="stylesheet" href="./css/header.css" />
-      <link rel="stylesheet" href="./css/snap.css" />
+      <link rel="stylesheet" href="./css/experiencedetail.css" />
       <link rel="stylesheet" href="./css/footer.css" />
    </head>
    <body>
@@ -54,16 +54,16 @@
          <!-- 모바일 헤더 -->
          <div class="mobile-header">
             <div class="top_header">
-               <p style="font-size: 16px; font-weight: 600">SNAP</p>
+               <p style="font-size: 16px; font-weight: 600">체험단</p>
                <div>
-                  <a href="bell.html" class="mob-bell-btn">
-                     <img src="./images/bk_bell_icon.png" alt="알림" />
+                  <a href="home.html" class="mob-home-btn">
+                     <img src="./images/e_home_icon.png" alt="모바일홈" />
                   </a>
                   <a href="search.html" class="mob-search-btn">
                      <img src="./images/click_pc_search.png" alt="모바일검색" />
                   </a>
-                  <a href="mypage.html">
-                     <div class="mob-profile"></div>
+                  <a href="cart.html" class="mob-cart-btn">
+                     <img src="./images/mob_cart_icon.png" alt="장바구니" />
                   </a>
                </div>
             </div>
@@ -73,10 +73,10 @@
             <div class="overlay"></div>
             <div class="modal centered">
                <div class="modal-inner">
+                  <button class="modal-close">✕</button>
                   <div class="tabs">
                      <button class="tab active" data-target="category">카테고리</button>
                      <button class="tab" data-target="service">서비스</button>
-                     <button class="modal-close">✕</button>
                   </div>
                   <div class="menu-header-list" id="headerList"></div>
                   <div class="hover-card-wrapper">
@@ -85,7 +85,36 @@
                </div>
             </div>
          </div>
-         <main></main>
+
+         <main>
+            <section class="detail-section">
+               <div id="sectionTitle"></div>
+               <div class="experience-detail">
+                  <div class="left-image-column">
+                     <!-- 제품이미지, 브랜드, 좋아요표시, 디데이표시-->
+                  </div>
+                  <div class="right-info-column">
+                     <div class="top-info">
+                        <!-- 모집기간, 당첨자 발표, 제품발송일, 후기 작성 기간 -->
+                     </div>
+                     <div class="bottom-info">
+                        <div class="info-1">
+                           <p>• 당첨자는 발표 후 영업일 4일 내 알림이 발송 됩니다.</p>
+                           <p>• 상품을 체험하고 후기를 꼭 작성해 주세요.</p>
+                        </div>
+                        <div class="event-card">
+                           <div>
+                              <p>SNS 공유 인증하면 당첨 확률이 높아져요.</p>
+                              <p>당첨 확률 높이는 방법 확인하기</p>
+                           </div>
+                           <div>›</div>
+                        </div>
+                        <button class="application-btn">신청하기</button>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </main>
          <!-- 모바일 하단 카테고리 바 -->
          <div id="category-bar">
             <div id="mobileCategoryBtn">
@@ -181,7 +210,7 @@
       </div>
 
       <script type="module" src="./js/menu.js"></script>
-      <!-- <script type="module" src="./js/snap.js"></script> -->
+      <script type="module" src="./js/experiencedetail.js"></script>
       <script src="./js/footer.js"></script>
    </body>
 </html>

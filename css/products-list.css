@@ -1,6 +1,10 @@
 main {
    margin-top: 113px;
 }
+.mobile-header,
+.bottom_header {
+   display: none;
+}
 
 .contents-section {
    max-width: 1200px;
@@ -19,11 +23,28 @@ main {
 }
 
 .content-card {
+   position: relative;
    height: auto;
    transition: transform 0.2s ease;
 }
 
-.content-card img {
+/* 하트 버튼 */
+.heart-btn {
+   position: absolute;
+   z-index: 2;
+   top: 8px;
+   right: 6px;
+   background: none;
+   border: none;
+   cursor: pointer;
+   padding: 0;
+}
+.heart-btn img {
+   width: 14px;
+   height: 12px;
+}
+
+.content-card a > img {
    border-radius: 5px;
    width: 100%;
    aspect-ratio: 0.7 / 1;
@@ -42,8 +63,85 @@ main {
    transform: translateY(-4px);
 }
 @media (max-width: 768px) {
+   header {
+      display: none;
+   }
+   body {
+      background-color: #fff;
+   }
+   .mobile-header {
+      display: flex;
+      padding: 0 20px;
+      height: 90px;
+      background-color: #f3f3f3;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 3000;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+   }
+
+   .top_header {
+      width: 100%;
+      padding-top: 48px;
+      display: flex;
+      justify-content: space-between;
+   }
+   .top_header > div {
+      display: flex;
+      align-items: center;
+      height: 25px;
+      gap: 5px;
+   }
+
+   .top_header > div > a > img {
+      height: 25px;
+      width: 25px;
+   }
+
+   #sectionTitle {
+      display: none;
+   }
    main {
-      margin-top: 72px;
+      margin-top: 90px;
+   }
+
+   .bottom_header {
+      margin-bottom: 10px;
+      height: 40px;
+      background-color: #f3f3f3;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      display: flex;
+      overflow-x: auto;
+      gap: 5px;
+      white-space: nowrap;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+   }
+   /* 스크롤바 안 보이게 (선택) */
+   .bottom_header::-webkit-scrollbar {
+      display: none;
+   }
+   .sub-btn {
+      all: unset;
+      flex-shrink: 0;
+      padding: 6px;
+      font-size: 13px;
+      color: #797979;
+      cursor: pointer;
+      white-space: nowrap;
+      /* :반짝임: 부드러운 색상/밑줄 전환 */
+      transition: color 0.3s ease, border-bottom 0.3s ease-out;
+      border-bottom: 2px solid transparent;
+   }
+   .sub-btn.active {
+      color: #1a1b1f;
+      border-bottom: 2px solid #1a1b1f;
+   }
+
+   #productList {
+      background-color: #f3f3f3;
    }
 
    .content-card p {
@@ -68,7 +166,4 @@ main {
       font-size: 10px;
       margin: 0;
    }
-}
-
-@media (max-width: 550px) {
 }

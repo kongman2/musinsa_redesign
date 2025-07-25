@@ -32,7 +32,23 @@
                </ul>
             </div>
             <div class="gnb container">
-               <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               <div class="mobile-icons">
+                  <div class="logo-icons">
+                     <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+                     <img style="width: 15px; height: 15px" src="./images/header_option.png" alt="아래화살표" />
+                  </div>
+                  <div class="right-icons">
+                     <a href="bell.html" class="bell-btn">
+                        <img src="./images/bell_icon.png" alt="알림" />
+                     </a>
+                     <a href="cart.html" class="cart-btn">
+                        <img src="./images/cart_icon.png" alt="장바구니" />
+                     </a>
+                     <a href="login.html" class="login-btn">
+                        <img src="./images/login_icon.png" alt="로그인" />
+                     </a>
+                  </div>
+               </div>
                <div class="header-icons">
                   <!-- 기본 검색 버튼 -->
                   <button class="search-btn" id="searchToggleBtn">
@@ -43,6 +59,13 @@
                      <img class="search-icon" src="./images/click_pc_search.png" alt="검색" />
                      <input type="text" name="search-input" placeholder="검색어를 입력하세요" />
                      <button class="close-search-btn" id="closeSearchBtn">×</button>
+                  </div>
+                  <!-- max-width: 550px 모바일 검색창 -->
+                  <div class="mobileSearch">
+                     <div class="mob-search-slide">
+                        <input type="text" name="search-input" placeholder="검색어를 입력하세요" />
+                        <img class="search-icon" src="./images/click_pc_search.png" alt="검색" />
+                     </div>
                   </div>
                   <button id="hamburgerBtn">
                      <img src="./images/menu_icon.png" alt="메뉴" />
@@ -62,11 +85,7 @@
                   </div>
                   <div class="menu-header-list" id="headerList"></div>
                   <div class="hover-card-wrapper">
-                     <button class="slide-prev">
-                        <img src="./images/slide-prev.png" alt="←" />
-                     </button>
                      <div class="hover-card-container" id="hoverCards"></div>
-                     <button class="slide-next"><img src="./images/slide-next.png" alt="→" /></button>
                   </div>
                </div>
             </div>
@@ -185,6 +204,29 @@
                </div>
             </section>
          </main>
+         <!-- 모바일 하단 카테고리 바 -->
+         <div id="category-bar">
+            <div id="mobileCategoryBtn">
+               <img id="categoryIcon" src="./images/e_category_icon.png" alt="카테고리" />
+               <p>카테고리</p>
+            </div>
+            <a href="./snap.html">
+               <img src="./images/e_snap_icon.png" alt="snap" />
+               <p>snap</p>
+            </a>
+            <a href="./home.html">
+               <img src="./images/e_home_icon.png" alt="홈" />
+               <p>홈</p>
+            </a>
+            <a href="./likepage.html">
+               <img src="./images/e_heart_icon.png" alt="좋아요" />
+               <p>좋아요</p>
+            </a>
+            <a href="./mypage.html">
+               <img src="./images/e_person_icon.png" alt="마이페이지" />
+               <p>마이</p>
+            </a>
+         </div>
          <footer>
             <div class="footer_section">
                <div class="top_footer container">

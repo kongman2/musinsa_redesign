@@ -6,8 +6,8 @@
       <title>MUSINSA</title>
       <link rel="stylesheet" href="./css/style.css" />
       <link rel="stylesheet" href="./css/header.css" />
-      <link rel="stylesheet" href="./css/login.css" />
       <link rel="stylesheet" href="./css/footer.css" />
+      <link rel="stylesheet" href="./css/login.css" />
    </head>
    <body>
       <div class="wrap">
@@ -31,7 +31,9 @@
                </ul>
             </div>
             <div class="gnb container">
-               <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               <div class="logo-icons">
+                  <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               </div>
                <div class="header-icons">
                   <!-- 기본 검색 버튼 -->
                   <button class="search-btn" id="searchToggleBtn">
@@ -54,25 +56,98 @@
             <div class="overlay"></div>
             <div class="modal centered">
                <div class="modal-inner">
-                  <button class="modal-close">✕</button>
                   <div class="tabs">
                      <button class="tab active" data-target="category">카테고리</button>
                      <button class="tab" data-target="service">서비스</button>
+                     <button class="modal-close">✕</button>
                   </div>
                   <div class="menu-header-list" id="headerList"></div>
                   <div class="hover-card-wrapper">
-                     <button class="slide-prev">
-                        <img src="./images/slide-prev.png" alt="←" />
-                     </button>
                      <div class="hover-card-container" id="hoverCards"></div>
-                     <button class="slide-next"><img src="./images/slide-next.png" alt="→" /></button>
                   </div>
                </div>
             </div>
          </div>
          <main>
-            <section class="login-section"></section>
+            <section class="login-section">
+               <h2 class="title">로그인</h2>
+               <div class="mob-title">
+                  <img src="./images/logo.png" alt="무신사로고" />
+               </div>
+               <!-- 왼쪽 로그인 폼 -->
+               <div class="login-input-info">
+                  <div class="left-input-column">
+                     <form id="loginForm">
+                        <input type="text" id="username" placeholder="아이디" required />
+                        <input type="password" id="password" placeholder="비밀번호" required />
+                        <div class="options">
+                           <label><input type="checkbox" id="saveId" />아이디 저장</label>
+                           <div class="pc-links links">
+                              <a href="#">아이디 찾기</a>
+                              <span>|</span>
+                              <a href="#">비밀번호 찾기</a>
+                           </div>
+                        </div>
+                        <button type="submit">로그인</button>
+                        <div class="social-login">
+                           <button class="kakao-btn">
+                              <img src="./images/kakao-icon.png" alt="kakao-icon" />
+                              카카오톡으로 로그인
+                           </button>
+                           <button class="apple-btn">
+                              <img src="./images/apple-icon.png" alt="apple-icon" />
+                              Apple로 로그인
+                           </button>
+                        </div>
+                        <div style="display: none" class="mob links">
+                           <div>
+                              <p>가입만해도 즉시 20% 할인</p>
+                              <a href="#">회원가입</a>
+                           </div>
+                           <div>
+                              <a href="#">아이디 찾기</a>
+                              <span>|</span>
+                              <a href="#">비밀번호 찾기</a>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+                  <!-- 오른쪽 프로모션 영역 -->
+                  <div class="right-info-column">
+                     <div class="top-info">
+                        <h2>무신사 회원은 최대 8% 적립,<br />전 상품 무료배송 혜택</h2>
+                        <p>가입만 해도 즉시 20% 할인</p>
+                     </div>
+
+                     <a href="#" class="join-link">회원가입 <span class="arrow">›</span></a>
+                     <img src="./images/join.png" alt="join-img" />
+                  </div>
+               </div>
+            </section>
          </main>
+         <!-- 모바일 하단 카테고리 바 -->
+         <div id="category-bar">
+            <div id="mobileCategoryBtn">
+               <img id="categoryIcon" src="./images/e_category_icon.png" alt="카테고리" />
+               <p>카테고리</p>
+            </div>
+            <a href="./snap.html">
+               <img src="./images/e_snap_icon.png" alt="snap" />
+               <p>snap</p>
+            </a>
+            <a href="./home.html">
+               <img src="./images/e_home_icon.png" alt="홈" />
+               <p>홈</p>
+            </a>
+            <a href="./likepage.html">
+               <img src="./images/e_heart_icon.png" alt="좋아요" />
+               <p>좋아요</p>
+            </a>
+            <a href="./mypage.html">
+               <img src="./images/e_person_icon.png" alt="마이페이지" />
+               <p>마이</p>
+            </a>
+         </div>
          <footer>
             <div class="footer_section">
                <div class="top_footer container">
@@ -145,7 +220,7 @@
       </div>
 
       <script type="module" src="./js/menu.js"></script>
-      <script type="module" src="./js/login.js"></script>
+      <!-- <script type="module" src="./js/login.js"></script> -->
       <script type="module" src="./js/footer.js"></script>
    </body>
 </html>

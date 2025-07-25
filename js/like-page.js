@@ -1,4 +1,4 @@
-import { likedProducts } from './json-data.js'
+import { Products } from './json-data.js'
 const container = document.querySelector('.like-products')
 const categoryTabs = document.querySelectorAll('.like-subcategory li')
 let currentCategory = '전체'
@@ -6,22 +6,25 @@ let currentCategory = '전체'
 function renderProducts() {
    container.innerHTML = ''
    // 현재 탭에 따라 liked=true인 것만 필터링
-   const filtered = currentCategory === '전체' ? likedProducts.filter((item) => item.liked) : likedProducts.filter((item) => item.category === currentCategory && item.liked)
+   const filtered = currentCategory === '전체' ? Products.filter((item) => item.liked) : Products.filter((item) => item.category === currentCategory && item.liked)
    // 카드 렌더링
    filtered.forEach((item) => {
       const card = document.createElement('div')
       card.className = 'product-card'
       card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" />
+      <a href="productdetail.html?id=${item.id}" class="card-img">
+      <img src="${item.img}" alt="${item.name}" />
+      
       <div class="info">
-      <button class="heart-btn" data-id="${item.id}">
-        <img src="./images/${item.liked ? 'like_on.png' : 'like_off.png'}" alt="하트" />
-      </button>
         <p class="brand">${item.brand}</p>
         <p class="name">${item.name}</p>
-        <p class="price"><span class="discount">${item.discount}</span> ${item.price}원</p>
-      </div>
-
+        <p class="price">
+         ${item.discount ? `<span class="discount">${item.discount}</span>` : ''} ${item.price}원
+        </p>
+      </a>
+      <button class="heart-btn" data-id="${item.id}">
+        <img src="./images/${item.liked ? 'r_heart_icon.png' : 'tabler_heart.png'}" alt="하트" />
+      </button>
     `
       container.appendChild(card)
    })
@@ -29,7 +32,7 @@ function renderProducts() {
    document.querySelectorAll('.heart-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
          const id = parseInt(btn.dataset.id)
-         const product = likedProducts.find((p) => p.id === id)
+         const product = Products.find((p) => p.id === id)
          product.liked = !product.liked
          renderProducts() // liked = false면 자동 제거됨
       })

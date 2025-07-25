@@ -31,7 +31,9 @@
                </ul>
             </div>
             <div class="gnb container">
-               <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               <div class="logo-icons">
+                  <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               </div>
                <div class="header-icons">
                   <!-- 기본 검색 버튼 -->
                   <button class="search-btn" id="searchToggleBtn">
@@ -49,6 +51,17 @@
                </div>
             </div>
          </header>
+         <!-- 모바일 헤더 -->
+         <div class="mobile-header">
+            <div class="top_header">
+               <p style="font-size: 16px; font-weight: 600">장바구니</p>
+               <div>
+                  <a href="home.html" class="mob-search-btn">
+                     <img src="./images/e_home_icon.png" alt="홈" />
+                  </a>
+               </div>
+            </div>
+         </div>
          <!-- 메뉴 모달 -->
          <div id="menuModal" class="modal-wrapper hide">
             <div class="overlay"></div>
@@ -61,11 +74,7 @@
                   </div>
                   <div class="menu-header-list" id="headerList"></div>
                   <div class="hover-card-wrapper">
-                     <button class="slide-prev">
-                        <img src="./images/slide-prev.png" alt="←" />
-                     </button>
                      <div class="hover-card-container" id="hoverCards"></div>
-                     <button class="slide-next"><img src="./images/slide-next.png" alt="→" /></button>
                   </div>
                </div>
             </div>
@@ -119,6 +128,29 @@
                </section>
             </section>
          </main>
+         <!-- 모바일 하단 카테고리 바 -->
+         <div id="category-bar">
+            <div id="mobileCategoryBtn">
+               <img id="categoryIcon" src="./images/e_category_icon.png" alt="카테고리" />
+               <p>카테고리</p>
+            </div>
+            <a href="./snap.html">
+               <img src="./images/e_snap_icon.png" alt="snap" />
+               <p>snap</p>
+            </a>
+            <a href="./home.html">
+               <img src="./images/e_home_icon.png" alt="홈" />
+               <p>홈</p>
+            </a>
+            <a href="./likepage.html">
+               <img src="./images/e_heart_icon.png" alt="좋아요" />
+               <p>좋아요</p>
+            </a>
+            <a href="./mypage.html">
+               <img src="./images/e_person_icon.png" alt="마이페이지" />
+               <p>마이</p>
+            </a>
+         </div>
          <footer>
             <div class="footer_section">
                <div class="top_footer container">

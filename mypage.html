@@ -31,7 +31,9 @@
                </ul>
             </div>
             <div class="gnb container">
-               <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               <div class="logo-icons">
+                  <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               </div>
                <div class="header-icons">
                   <!-- 기본 검색 버튼 -->
                   <button class="search-btn" id="searchToggleBtn">
@@ -49,30 +51,195 @@
                </div>
             </div>
          </header>
+         <!-- 모바일 헤더 -->
+         <div class="mobile-header">
+            <div class="top_header">
+               <p style="font-size: 16px; font-weight: 600">마이페이지</p>
+               <div>
+                  <a href="home.html" class="mob-search-btn">
+                     <img src="./images/e_home_icon.png" alt="홈" />
+                  </a>
+               </div>
+            </div>
+         </div>
          <!-- 메뉴 모달 -->
          <div id="menuModal" class="modal-wrapper hide">
             <div class="overlay"></div>
             <div class="modal centered">
                <div class="modal-inner">
-                  <button class="modal-close">✕</button>
                   <div class="tabs">
                      <button class="tab active" data-target="category">카테고리</button>
-                     <button class="tab" data-target="service">서비스</button>
+                     <button class="tab" data-target="service">서비스</button> <button class="modal-close">✕</button>
                   </div>
                   <div class="menu-header-list" id="headerList"></div>
                   <div class="hover-card-wrapper">
-                     <button class="slide-prev">
-                        <img src="./images/slide-prev.png" alt="←" />
-                     </button>
                      <div class="hover-card-container" id="hoverCards"></div>
-                     <button class="slide-next"><img src="./images/slide-next.png" alt="→" /></button>
                   </div>
                </div>
             </div>
          </div>
          <main>
-            <section class="mypage"></section>
+            <section class="mypage-section">
+               <div id="sectionTitle">마이페이지</div>
+               <div class="top-info">
+                  <div class="profile-info">
+                     <div class="profile-img">
+                        <div class="profile"></div>
+                        <button><a href="#">스냅 프로필</a></button>
+                     </div>
+                     <div class="custom-info">
+                        <div class="username">
+                           <p>username</p>
+                           <p class="level">LV.3 &nbsp;›</p>
+                        </div>
+                        <div class="custom">
+                           <div>
+                              <p>나의 맞춤정보 &nbsp;&nbsp;›</p>
+                              <p>체형, 피부, 취향 정보 입력하고 <br />상품 추천받기</p>
+                           </div>
+                           <div>
+                              <p>나의 브랜드 리스트 &nbsp;&nbsp;›</p>
+                              <p>자주 구매한 브랜드 모아보기</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="sub-info">
+                     <div class="benefits-info">
+                        <div class="point">
+                           <div>
+                              <p>포인트 <img src="./images/point_icon.png" alt="point" /></p>
+                              <p>›</p>
+                           </div>
+                           <p>0,000원</p>
+                        </div>
+                        <div class="money">
+                           <div>
+                              <p>무신사머니 <img src="./images/money_icon.png" alt="money" /></p>
+                              <p>›</p>
+                           </div>
+                           <p>충전하기</p>
+                        </div>
+                        <div class="coupon">
+                           <div>
+                              <p>쿠폰 <img src="./images/coupon_icon.png" alt="coupon" /></p>
+                              <p>›</p>
+                           </div>
+                           <p>20장</p>
+                        </div>
+                     </div>
+                     <div class="order-info">
+                        <div>
+                           <p>주문내역</p>
+                           <a href="#">1</a>
+                        </div>
+                        <div>
+                           <p>리뷰</p>
+                           <a href="#">1</a>
+                        </div>
+                        <div>
+                           <p>문의</p>
+                           <a href="#">1</a>
+                        </div>
+                        <div>
+                           <p>취소/교환/반품</p>
+                           <a href="#">1</a>
+                        </div>
+                        <div>
+                           <p>재입고</p>
+                           <a href="#">1</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="bottom-info">
+                  <a>
+                     <p>이벤트회원혜택<span>신규</span></p>
+                     <p>›</p>
+                  </a>
+                  <a>
+                     <p>리서치참여<span>신규</span></p>
+                     <p>›</p>
+                  </a>
+                  <a>
+                     <p>체험단 신청/응모 내역</p>
+                     <p>›</p>
+                  </a>
+                  <a>
+                     <p>래플응모내역</p>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <p>크리에이터 마켓플레이스<span>신규</span></p>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <p>무신사 큐레이터 서비스<span>신규</span></p>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <div>
+                        <img style="width: 40px; height: 40px" src="./images/musinsa_money.png" alt="무신사머니" />
+                        <div>
+                           <p>무신사머니 런칭</p>
+                           <p>첫 결제 10% 추가 적립</p>
+                        </div>
+                     </div>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <div style="flex-direction: column; gap: 0; align-items: start">
+                        <p>무신사 머니/머니 상품권 등록<span>신규</span></p>
+                        <p class="details">친구에게 무신사를 선물하세요</p>
+                     </div>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <p>무신사페이 관리</p>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <p>무신사 현대카드 할인 정보</p>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <p>고객센터</p>
+                     <p class="arrow">›</p>
+                  </a>
+                  <a>
+                     <p>공지사항</p>
+                     <p class="arrow">›</p>
+                  </a>
+               </div>
+               <div class="logout">
+                  <a href="#">캐시삭제</a>
+                  <a href="#">로그아웃</a>
+               </div>
+            </section>
          </main>
+         <!-- 모바일 하단 카테고리 바 -->
+         <div id="category-bar">
+            <div id="mobileCategoryBtn">
+               <img id="categoryIcon" src="./images/e_category_icon.png" alt="카테고리" />
+               <p>카테고리</p>
+            </div>
+            <a href="./snap.html">
+               <img src="./images/e_snap_icon.png" alt="snap" />
+               <p>snap</p>
+            </a>
+            <a href="./home.html">
+               <img src="./images/e_home_icon.png" alt="홈" />
+               <p>홈</p>
+            </a>
+            <a href="./likepage.html">
+               <img src="./images/e_heart_icon.png" alt="좋아요" />
+               <p>좋아요</p>
+            </a>
+            <a href="./mypage.html">
+               <img src="./images/e_person_icon.png" alt="마이페이지" />
+               <p>마이</p>
+            </a>
+         </div>
          <footer>
             <div class="footer_section">
                <div class="top_footer container">
@@ -145,7 +312,7 @@
       </div>
 
       <script type="module" src="./js/menu.js"></script>
-      <script type="module" src="./js/mypage.js"></script>
+      <!-- <script type="module" src="./js/mypage.js"></script> -->
       <script type="module" src="./js/footer.js"></script>
    </body>
 </html>

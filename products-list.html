@@ -31,7 +31,26 @@
                </ul>
             </div>
             <div class="gnb container">
-               <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               <div class="mobile-icons">
+                  <div class="logo-icons">
+                     <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+                     <img style="width: 13px; height: 13px" src="./images/header_option.png" alt="아래화살표" />
+                  </div>
+                  <p>
+                     <!-- 카테고리 이름 -->
+                  </p>
+                  <div class="right-icons">
+                     <a href="bell.html" class="bell-btn">
+                        <img src="./images/bell_icon.png" alt="알림" />
+                     </a>
+                     <a href="cart.html" class="cart-btn">
+                        <img src="./images/cart_icon.png" alt="장바구니" />
+                     </a>
+                     <a href="login.html" class="login-btn">
+                        <img src="./images/login_icon.png" alt="로그인" />
+                     </a>
+                  </div>
+               </div>
                <div class="header-icons">
                   <!-- 기본 검색 버튼 -->
                   <button class="search-btn" id="searchToggleBtn">
@@ -43,39 +62,84 @@
                      <input type="text" name="search-input" placeholder="검색어를 입력하세요" />
                      <button class="close-search-btn" id="closeSearchBtn">×</button>
                   </div>
+                  <!-- max-width: 550px 모바일 검색창 -->
+                  <div class="mobileSearch">
+                     <div class="mob-search-slide">
+                        <img class="search-icon" src="./images/click_pc_search.png" alt="검색" />
+                        <input type="text" name="search-input" placeholder="검색어를 입력하세요" />
+                     </div>
+                  </div>
                   <button id="hamburgerBtn">
                      <img src="./images/menu_icon.png" alt="메뉴" />
                   </button>
                </div>
             </div>
          </header>
+         <!-- 모바일 헤더 -->
+         <div class="mobile-header">
+            <div class="top_header">
+               <p id="mobSectionTitle" style="font-size: 16px"></p>
+               <div>
+                  <a href="search.html" class="mob-search-btn">
+                     <img src="./images/click_pc_search.png" alt="모바일검색" />
+                  </a>
+                  <a href="cart.html" class="mob-cart-btn">
+                     <img src="./images/mob_cart_icon.png" alt="장바구니" />
+                  </a>
+               </div>
+            </div>
+         </div>
          <!-- 메뉴 모달 -->
          <div id="menuModal" class="modal-wrapper hide">
             <div class="overlay"></div>
             <div class="modal centered">
                <div class="modal-inner">
-                  <button class="modal-close">✕</button>
                   <div class="tabs">
                      <button class="tab active" data-target="category">카테고리</button>
-                     <button class="tab" data-target="service">서비스</button>
+                     <button class="tab" data-target="service">서비스</button> <button class="modal-close">✕</button>
                   </div>
                   <div class="menu-header-list" id="headerList"></div>
                   <div class="hover-card-wrapper">
-                     <button class="slide-prev">
-                        <img src="./images/slide-prev.png" alt="←" />
-                     </button>
                      <div class="hover-card-container" id="hoverCards"></div>
-                     <button class="slide-next"><img src="./images/slide-next.png" alt="→" /></button>
                   </div>
                </div>
             </div>
          </div>
          <main>
             <section class="contents-section">
-               <p id="sectionTitle" style="font-size: 15px"></p>
+               <div class="bottom_header">
+                  <!-- sub_category 메뉴 -->
+               </div>
+               <p id="sectionTitle" style="font-size: 16px"></p>
                <div id="productList" class="card-list"></div>
+               <div id="emptyLike" class="empty-like" style="display: none">
+                  <img src="./images/e_heart_icon.png" alt="찜한상품없음" class="heart-icon" />
+               </div>
             </section>
          </main>
+         <!-- 모바일 하단 카테고리 바 -->
+         <div id="category-bar">
+            <div id="mobileCategoryBtn">
+               <img id="categoryIcon" src="./images/e_category_icon.png" alt="카테고리" />
+               <p>카테고리</p>
+            </div>
+            <a href="./snap.html">
+               <img src="./images/e_snap_icon.png" alt="snap" />
+               <p>snap</p>
+            </a>
+            <a href="./home.html">
+               <img src="./images/e_home_icon.png" alt="홈" />
+               <p>홈</p>
+            </a>
+            <a href="./likepage.html">
+               <img src="./images/e_heart_icon.png" alt="좋아요" />
+               <p>좋아요</p>
+            </a>
+            <a href="./mypage.html">
+               <img src="./images/e_person_icon.png" alt="마이페이지" />
+               <p>마이</p>
+            </a>
+         </div>
          <footer>
             <div class="footer_section">
                <div class="top_footer container">

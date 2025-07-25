@@ -29,6 +29,13 @@ header {
 .left-menu li,
 .right-menu li {
    font-size: 15px;
+   transition: all 0.3s ease;
+}
+
+.left-menu li:hover,
+.right-menu li:hover {
+   transform: translateY(5px);
+   color: #fff;
 }
 
 .gnb {
@@ -41,9 +48,11 @@ header {
    height: 35px;
 }
 
-.header-icons img {
-   height: 28px;
+.logo-icons > img,
+.right-icons {
+   display: none;
 }
+
 /* 검색창 */
 .search-row {
    display: none;
@@ -58,6 +67,14 @@ header {
    position: relative;
    gap: 10px;
 }
+.header-icons img {
+   height: 28px;
+   transition: transform 0.3s ease;
+}
+.header-icons img:hover {
+   transform: translateY(-5px);
+}
+
 /* 검색 슬라이드 기본 상태 */
 .search-slide {
    position: absolute;
@@ -135,8 +152,7 @@ menu 모달창 공통 스타일
 /* 모달 본체 */
 .modal.centered {
    position: relative;
-   z-index: 2;
-   width: 70%;
+   z-index: 6;
    max-width: 1000px;
    background: #fff;
    border-radius: 10px;
@@ -161,7 +177,7 @@ menu 모달창 공통 스타일
    background: none;
    border: none;
    cursor: pointer;
-   z-index: 2;
+   z-index: 6;
 }
 /* 탭 버튼 */
 .tabs {
@@ -172,7 +188,7 @@ menu 모달창 공통 스타일
    position: sticky;
    top: 0;
    background: #fff;
-   z-index: 1;
+   z-index: 5;
 }
 .tab {
    font-size: 16px;
@@ -210,8 +226,15 @@ menu 모달창 공통 스타일
    width: 100%;
    padding: 10px;
    overflow-y: auto;
-   max-height: 550px;
+   height: 100%;
+   scrollbar-width: none;
+   -ms-overflow-style: none;
 }
+
+#hoverCards::-webkit-scrollbar {
+   display: none;
+}
+
 /* 카드 리스트: PC 기준 4열 */
 .hover-card-list {
    display: grid;
@@ -254,11 +277,7 @@ menu 모달창 공통 스타일
    color: #333;
    margin: 0;
 }
-/* 슬라이드 버튼 제거 */
-.slide-prev,
-.slide-next {
-   display: none !important;
-}
+
 /* 애니메이션 */
 @keyframes fadeIn {
    from {
@@ -269,6 +288,12 @@ menu 모달창 공통 스타일
       opacity: 1;
       transform: scale(1);
    }
+}
+
+/* 모바일 전용 하단 고정 바 */
+#category-bar,
+.mobileSearch {
+   display: none;
 }
 
 /* ===============================
@@ -313,18 +338,80 @@ menu 모달창 공통 스타일
       display: none;
    }
 
-   .gnb .header-icons {
+   .mobileSearch {
       display: flex;
-      justify-content: end;
+   }
+
+   .gnb {
+      flex-direction: column;
+   }
+
+   .gnb .header-icons {
+      display: inline;
+      margin-top: 15px;
+   }
+
+   .logo img {
+      height: 25px;
+   }
+
+   .logo-icons > img,
+   .right-icons {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+   }
+
+   .mobile-icons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px;
+   }
+
+   .logo-icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+   }
+
+   .logo-icons > a,
+   .mobile-icons .right-icons > a {
+      height: 25px;
+   }
+
+   .mobile-icons .right-icons > a > img {
+      height: 25px;
+      width: 25px;
+   }
+
+   .search-btn,
+   .search-slide {
+      display: none;
+      width: 100%;
+   }
+
+   .mob-search-slide {
+      width: 100%;
+      background: #f3f3f3;
+      border: 1px solid #1a1b1f;
+      border-radius: 5px;
+      padding: 3px 10px;
+      display: flex;
+      gap: 8px;
+   }
+
+   .mob-search-slide > input {
+      width: 100%;
+      border: none;
+      background: #f3f3f3;
    }
 
    /* 모달 → 전체 페이지로 보이게 */
    .modal-wrapper {
-      margin-top: 72px;
-      position: static;
       width: 100vw;
       height: 100vh;
-      z-index: auto;
+      z-index: 3001;
       display: none;
    }
 
@@ -332,21 +419,52 @@ menu 모달창 공통 스타일
       display: block;
    }
 
+   @keyframes slideUpModal {
+      0% {
+         transform: translateY(100%);
+      }
+      100% {
+         transform: translateY(0);
+      }
+   }
+   @keyframes slideDownModal {
+      0% {
+         transform: translateY(0);
+      }
+      100% {
+         transform: translateY(100%);
+      }
+   }
+
    .modal.centered {
       width: 100vw;
       height: 100vh;
       border-radius: 0;
-      animation: none;
       position: fixed;
+      bottom: 0;
+      left: 0;
+      animation-duration: 0.7s;
+      animation-fill-mode: forwards;
    }
+
    .modal-inner {
-      padding: 16px;
       height: 100%;
-      overflow-y: auto;
+      padding-bottom: 90px;
+      padding-top: 40px;
    }
    .modal-wrapper .overlay {
       display: none;
    }
+
+   .hover-card-wrapper {
+      height: 100%;
+   }
+
+   #hoverCards {
+      padding: 5px;
+      padding-bottom: 300px;
+   }
+
    /* 카드 리스트: 모바일 3열 */
    .hover-card-list {
       grid-template-columns: repeat(3, 1fr);
@@ -356,5 +474,85 @@ menu 모달창 공통 스타일
    }
    .hover-card div {
       padding: 12px 0;
+   }
+
+   #category-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 9999;
+   }
+
+   #category-bar > div,
+   #category-bar > a {
+      width: 100%;
+      min-width: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 13px;
+      color: #1a1b1f;
+   }
+
+   #hamburgerBtn {
+      display: none;
+   }
+}
+
+@media (max-width: 550px) {
+   .tab {
+      padding: 10px;
+   }
+   .modal-inner {
+      padding: 10px;
+      padding-top: 30px;
+   }
+
+   .menu-header-list {
+      margin-bottom: 10px;
+   }
+
+   .menu-header-list li {
+      font-size: 15px;
+      padding: 10px;
+   }
+
+   #hoverCards {
+      padding-bottom: 200px;
+   }
+
+   .modal-close {
+      font-size: 15px;
+   }
+
+   .hover-card-list.service {
+      grid-template-columns: 1fr;
+   }
+
+   .hover-card p {
+      font-size: 14px;
+   }
+
+   .hover-card-list.service .hover-card p {
+      font-size: 15px;
+   }
+
+   #category-bar {
+      padding: 5px 0;
+   }
+
+   #category-bar > div,
+   #category-bar > a {
+      font-size: 11px;
+   }
+   #category-bar img {
+      width: 50%;
+      max-width: 30px;
    }
 }

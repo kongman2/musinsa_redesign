@@ -31,7 +31,9 @@
                </ul>
             </div>
             <div class="gnb container">
-               <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               <div class="logo-icons">
+                  <a class="logo" href="./home.html"><img src="./images/logo.png" alt="로고" /></a>
+               </div>
                <div class="header-icons">
                   <!-- 기본 검색 버튼 -->
                   <button class="search-btn" id="searchToggleBtn">
@@ -49,34 +51,23 @@
                </div>
             </div>
          </header>
-         <!-- 메뉴 모달 -->
-         <div id="menuModal" class="modal-wrapper hide">
-            <div class="overlay"></div>
-            <div class="modal centered">
-               <div class="modal-inner">
-                  <button class="modal-close">✕</button>
-                  <div class="tabs">
-                     <button class="tab active" data-target="category">카테고리</button>
-                     <button class="tab" data-target="service">서비스</button>
-                  </div>
-                  <div class="menu-header-list" id="headerList"></div>
-                  <div class="hover-card-wrapper">
-                     <button class="slide-prev">
-                        <img src="./images/slide-prev.png" alt="←" />
-                     </button>
-                     <div class="hover-card-container" id="hoverCards"></div>
-                     <button class="slide-next"><img src="./images/slide-next.png" alt="→" /></button>
-                  </div>
+         <!-- 모바일 헤더 -->
+         <div class="mobile-header">
+            <div class="top_header">
+               <p id="sectionTitle" style="font-size: 16px">좋아요</p>
+               <div>
+                  <a href="home.html" class="mob-home-btn">
+                     <img src="./images/e_home_icon.png" alt="홈" />
+                  </a>
+                  <a href="search.html" class="mob-search-btn">
+                     <img src="./images/click_pc_search.png" alt="모바일검색" />
+                  </a>
+                  <a href="cart.html" class="mob-cart-btn">
+                     <img src="./images/mob_cart_icon.png" alt="장바구니" />
+                  </a>
                </div>
             </div>
-         </div>
-         <main>
-            <section class="like-section">
-               <div class="title">
-                  <h2>LIKE</h2>
-                  <img src="./images/r_heart_icon.png" alt="heart" />
-               </div>
-
+            <div class="like-tab">
                <!-- 메뉴 탭 -->
                <ul class="like-menu-category">
                   <li class="active" data-type="상품">상품</li>
@@ -94,10 +85,59 @@
                   <li data-category="패션소품">패션소품</li>
                   <li data-category="스포츠/레저">스포츠/레저</li>
                </ul>
+            </div>
+         </div>
+         <!-- 메뉴 모달 -->
+         <div id="menuModal" class="modal-wrapper hide">
+            <div class="overlay"></div>
+            <div class="modal centered">
+               <div class="modal-inner">
+                  <div class="tabs">
+                     <button class="tab active" data-target="category">카테고리</button>
+                     <button class="tab" data-target="service">서비스</button>
+                     <button class="modal-close">✕</button>
+                  </div>
+                  <div class="menu-header-list" id="headerList"></div>
+                  <div class="hover-card-wrapper">
+                     <div class="hover-card-container" id="hoverCards"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <main>
+            <section class="like-section">
+               <div class="title">
+                  <h2>LIKE</h2>
+                  <img src="./images/r_heart_icon.png" alt="heart" />
+               </div>
+
                <!-- 카드 영역 -->
                <div class="like-products"></div>
             </section>
          </main>
+         <!-- 모바일 하단 카테고리 바 -->
+         <div id="category-bar">
+            <div id="mobileCategoryBtn">
+               <img id="categoryIcon" src="./images/e_category_icon.png" alt="카테고리" />
+               <p>카테고리</p>
+            </div>
+            <a href="./snap.html">
+               <img src="./images/e_snap_icon.png" alt="snap" />
+               <p>snap</p>
+            </a>
+            <a href="./home.html">
+               <img src="./images/e_home_icon.png" alt="홈" />
+               <p>홈</p>
+            </a>
+            <a href="./likepage.html">
+               <img src="./images/e_heart_icon.png" alt="좋아요" />
+               <p>좋아요</p>
+            </a>
+            <a href="./mypage.html">
+               <img src="./images/e_person_icon.png" alt="마이페이지" />
+               <p>마이</p>
+            </a>
+         </div>
          <footer>
             <div class="footer_section">
                <div class="top_footer container">

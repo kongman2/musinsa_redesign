@@ -1,0 +1,186 @@
+main {
+   margin-top: 113px;
+}
+
+.mobile-header {
+   display: none;
+}
+
+/* 전체 레이아웃 */
+.detail-section {
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+#sectionTitle {
+   padding: 10px 20px;
+   font-size: 16px;
+   font-weight: 600;
+}
+
+.experience-detail {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   margin: 0 auto;
+   padding: 10px 0;
+   height: auto;
+}
+
+.left-image-column {
+   text-align: center;
+   padding: 0 20px;
+}
+
+.product-image-box img {
+   border-radius: 10px;
+   width: 100%;
+}
+
+.right-info-column {
+   font-size: 15px;
+   padding: 0 20px;
+}
+
+.top-info > div {
+   margin-bottom: 20px;
+}
+
+.product-badge {
+   display: flex;
+   gap: 10px;
+   margin-bottom: 10px;
+}
+
+.product-name {
+   margin-bottom: 20px;
+}
+
+article {
+   display: flex;
+   gap: 16px;
+   padding: 5px 0;
+}
+
+article p:first-child {
+   width: 100px;
+}
+
+article p span {
+   color: rgb(36 94 255 / var(--tw-text-opacity, 1));
+}
+
+.info-1 {
+   margin-bottom: 20px;
+}
+
+.info-1 > p {
+   padding: 3px 0;
+}
+
+.event-card {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-color: #ddd;
+   border-radius: 5px;
+   padding: 10px;
+   margin-bottom: 20px;
+}
+
+.event-card p:last-child {
+   color: #797979;
+   font-size: 13px;
+}
+
+.application-btn {
+   width: 100%;
+   background-color: #1a1b1f;
+   color: #fff;
+   border-radius: 5px;
+   padding: 15px;
+}
+
+@media screen and (max-width: 768px) {
+   header {
+      display: none;
+   }
+   body {
+      background-color: #fff;
+   }
+
+   .mobile-header {
+      display: flex;
+      padding: 0 20px;
+      height: 90px;
+      background-color: #f3f3f3;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 3000;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+   }
+
+   .top_header {
+      width: 100%;
+      padding-top: 48px;
+      display: flex;
+      justify-content: space-between;
+   }
+   .top_header > div {
+      display: flex;
+      align-items: center;
+      height: 25px;
+      gap: 5px;
+   }
+
+   .top_header > div > a > img {
+      height: 25px;
+      width: 25px;
+   }
+
+   .detail-section {
+      background-color: #f3f3f3;
+   }
+
+   #sectionTitle {
+      padding: 5px 10px;
+      font-size: 13px;
+   }
+   main {
+      margin-top: 100px;
+   }
+
+   #sectionTitle {
+      display: none;
+   }
+
+   .experience-detail {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      min-width: 450px;
+      margin-bottom: 50px;
+   }
+
+   .left-image-column {
+      padding: 0 10px;
+   }
+
+   .right-info-column {
+      font-size: 13px;
+      padding: 0 10px;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   #sectionTitle {
+      font-size: 13px;
+   }
+
+   .experience-detail {
+      width: 100%;
+      max-width: 450px;
+      min-width: 320px;
+   }
+}

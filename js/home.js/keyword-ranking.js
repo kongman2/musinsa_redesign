@@ -41,7 +41,11 @@ function renderCards() {
       slice.forEach((card) => {
          const el = document.createElement('a')
          el.className = 'rankingcard'
-         el.href = `./productdetail.html?id=${card.id}`
+         if (card.tab === '체험단') {
+            el.href = `./experiencedetail.html?tab=${card.tab}&id=${card.id}`
+         } else {
+            el.href = `./productdetail.html?id=${card.id}`
+         }
 
          if (card.tab === '체험단') {
             el.innerHTML = `
@@ -49,8 +53,8 @@ function renderCards() {
             <p class="brand">${card.brand}</p>
             <p class="name">${card.name}</p>
             <div class="price">
-              <span class="sale">${card.discount}</span>
-              <span class="amount" ">${card.price}</span>
+              <span class="sale">${card.count}명 모집</span>
+              <span class="amount">D-${card.date}</span>
             </div>
    `
          } else if (card.discount === '') {
@@ -58,7 +62,7 @@ function renderCards() {
             <img src="${card.img}" alt="${card.name}"  />
             <p class="brand">${card.brand}</p>
             <p class="name">${card.name}</p>
-            <p class="amount" ">${card.price}원</p>
+            <p class="amount">${card.price}원</p>
          `
          } else {
             el.innerHTML = `

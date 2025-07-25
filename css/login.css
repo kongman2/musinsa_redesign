@@ -1,0 +1,254 @@
+main {
+   margin-top: 113px;
+}
+
+.login-section {
+   max-width: 1200px;
+   margin: 0 auto;
+}
+.login-section .title {
+   font-size: 24px;
+   font-weight: 400;
+   text-align: center;
+   margin-bottom: 20px;
+   padding: 40px 70px;
+}
+
+.mob-title {
+   display: none;
+}
+
+.login-input-info {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   padding-bottom: 100px;
+}
+
+/* 왼쪽 로그인 폼 */
+.left-input-column {
+   width: 480px;
+   min-width: 480px;
+   padding: 0 80px;
+}
+.left-input-column form input[type='text'],
+.left-input-column form input[type='password'] {
+   width: 100%;
+   padding: 12px;
+   margin-bottom: 10px;
+   border: 1px solid #d9d9d9;
+   border-radius: 4px;
+   font-size: 14px;
+}
+
+.left-input-column form input[type='text']:hover,
+.left-input-column form input[type='password']:hover {
+   border: 1px solid #797979;
+   transition: border 0.1s ease;
+}
+
+.options {
+   display: flex;
+   justify-content: space-between;
+   font-size: 13px;
+   margin: 8px 0 16px;
+}
+.options label {
+   display: flex;
+   align-items: center;
+   gap: 4px;
+   color: #797979;
+}
+
+.mob {
+   position: relative;
+   display: none;
+}
+
+.links {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   color: #797979;
+}
+.links a {
+   color: #797979;
+   text-decoration: none;
+   font-size: 13px;
+}
+.links a:hover {
+   text-decoration: underline;
+}
+.left-input-column button[type='submit'] {
+   width: 100%;
+   padding: 12px;
+   background: #1a1b1f;
+   color: #fff;
+   font-size: 15px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   margin-bottom: 12px;
+   transition: all 0.2s ease;
+}
+
+.left-input-column button[type='submit']:hover {
+   background-color: #333;
+}
+
+/* 소셜 로그인 */
+.social-login {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+.social-login button {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 8px;
+   width: 100%;
+   padding: 12px;
+   font-size: 14px;
+   font-weight: 500;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+.kakao-btn {
+   background-color: #fee500;
+   color: #1a1b1f;
+   transition: all 0.2s ease;
+}
+.kakao-btn:hover {
+   background-color: #ffef5b;
+   color: #000000;
+}
+
+.kakao-btn img,
+.apple-btn img {
+   width: 18px;
+   height: 18px;
+}
+.apple-btn {
+   background-color: #fff;
+   color: #1a1b1f;
+   transition: all 0.2s ease;
+}
+
+.apple-btn:hover {
+   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 오른쪽 정보영역 */
+.right-info-column {
+   width: 480px;
+   min-width: 450px;
+
+   display: flex;
+   flex-direction: column;
+   gap: 14px;
+   font-size: 14px;
+   padding: 0 80px;
+   color: #333;
+}
+.right-info-column h2 {
+   font-size: 24px;
+   font-weight: 400;
+   line-height: 1.5;
+}
+.right-info-column > div > p {
+   color: #797979;
+}
+.join-link {
+   color: #1a1b1f;
+   font-weight: 500;
+   font-size: 14px;
+   cursor: pointer;
+}
+
+.join-link:hover {
+   font-size: 15px;
+   transition: font-size 0.3s ease;
+}
+
+.arrow {
+   margin-left: 6px;
+   font-size: 16px;
+}
+.right-info-column img {
+   width: 200px;
+   margin-top: 10px;
+   text-align: center;
+}
+
+@media (max-width: 786px) {
+   body {
+      background-color: #1a1b1f;
+      color: #fff;
+   }
+   header {
+      display: none;
+   }
+   footer {
+      display: none;
+   }
+
+   .scroll-top-btn {
+      display: none;
+   }
+
+   main {
+      margin-top: 108px;
+   }
+
+   .title {
+      display: none;
+   }
+
+   .mob-title {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      padding: 40px 70px;
+   }
+
+   .mob-title img {
+      height: 25px;
+   }
+
+   .right-info-column {
+      display: none;
+   }
+
+   .left-input-column {
+      width: 360px;
+      min-width: 320px;
+      padding: 0 20px;
+   }
+
+   .left-input-column button[type='submit'] {
+      background-color: rgba(255, 255, 255, 0.4);
+   }
+
+   .pc-links {
+      display: none;
+   }
+   .mob {
+      display: flex !important;
+      flex-direction: column;
+      font-size: 13px;
+      margin: 30px 0 8px;
+   }
+
+   .mob > div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+   }
+
+   .mob > div:first-child > a {
+      text-decoration: underline;
+   }
+}
