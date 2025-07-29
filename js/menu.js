@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slide.classList.remove('show')
       toggleBtn.classList.remove('hide')
    })
+
    // 모바일 하단 카테고리 버튼 클릭
    mobileCategoryBtn?.addEventListener('click', () => {
       const isVisible = menuModal.classList.contains('show')

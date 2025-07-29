@@ -1,4 +1,4 @@
-import { Products, toggleLike, saveProductsToStorage, getFilteredProducts, getSubCategories } from './productUtils.js'
+import { toggleLike, getFilteredProducts, getSubCategories } from './productUtils.js'
 // 1. URL 파라미터 추출
 const params = new URLSearchParams(location.search)
 let categoryParam = params.get('category')
@@ -77,6 +77,7 @@ function renderProducts() {
       if (emptyLike) emptyLike.style.display = 'flex'
    }
 }
+
 // 7. 초기 실행
 renderSubCategoryTabs()
 renderProducts()

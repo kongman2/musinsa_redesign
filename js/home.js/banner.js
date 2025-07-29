@@ -1,12 +1,12 @@
 import { bannerData } from '../json-data.js'
-
 document.addEventListener('DOMContentLoaded', () => {
    const slidesContainer = document.getElementById('slides')
    const prevBtn = document.getElementById('prevBtn')
    const nextBtn = document.getElementById('nextBtn')
    const pagination = document.getElementById('pagination')
    let currentIndex = 1
-   let slideWidth
+   let slideWidth = 0
+   let autoInterval
    function createSlide(item) {
       const slide = document.createElement('div')
       slide.className = 'slide'
@@ -15,11 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
    }
    function renderSlides() {
       slidesContainer.innerHTML = ''
-      slidesContainer.appendChild(createSlide(bannerData[bannerData.length - 1]))
+      slidesContainer.appendChild(createSlide(bannerData[bannerData.length - 1])) // 맨 뒤 복제
       bannerData.forEach((item) => slidesContainer.appendChild(createSlide(item)))
-      slidesContainer.appendChild(createSlide(bannerData[0]))
+      slidesContainer.appendChild(createSlide(bannerData[0])) // 맨 앞 복제
       slideWidth = slidesContainer.querySelector('.slide').offsetWidth
+      updateSlidePosition()
+   }
+   function updateSlidePosition() {
       slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`
+      highlightActiveSlide()
+      updateDots()
    }
    function renderDots() {
       pagination.innerHTML = ''
@@ -35,47 +40,65 @@ document.addEventListener('DOMContentLoaded', () => {
       })
    }
    function updateDots() {
-      const dots = document.querySelectorAll('.dot')
+      const dots = pagination.querySelectorAll('.dot')
       dots.forEach((dot) => dot.classList.remove('active'))
       const realIndex = (currentIndex - 1 + bannerData.length) % bannerData.length
-      dots[realIndex].classList.add('active')
+      if (dots[realIndex]) dots[realIndex].classList.add('active')
+   }
+   function highlightActiveSlide() {
+      const slides = slidesContainer.querySelectorAll('.slide')
+      slides.forEach((slide, idx) => {
+         slide.classList.toggle('active', idx === currentIndex)
+      })
    }
    function moveSlide() {
       slidesContainer.style.transition = 'transform 0.5s ease-in-out'
       slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`
       updateDots()
+      highlightActiveSlide()
    }
-   nextBtn.addEventListener('click', () => {
-      currentIndex++
-      moveSlide()
-   })
-   prevBtn.addEventListener('click', () => {
-      currentIndex--
-      moveSlide()
-   })
-   slidesContainer.addEventListener('transitionend', () => {
+   function handleLoop() {
       slidesContainer.style.transition = 'none'
       if (currentIndex === 0) {
          currentIndex = bannerData.length
-         slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`
+         updateSlidePosition()
       }
       if (currentIndex === bannerData.length + 1) {
          currentIndex = 1
-         slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`
+         updateSlidePosition()
       }
       setTimeout(() => {
          slidesContainer.style.transition = 'transform 0.5s ease-in-out'
       }, 20)
+   }
+   prevBtn.addEventListener('click', () => {
+      currentIndex--
+      moveSlide()
+      resetAutoSlide()
    })
+   nextBtn.addEventListener('click', () => {
+      currentIndex++
+      moveSlide()
+      resetAutoSlide()
+   })
+   slidesContainer.addEventListener('transitionend', handleLoop)
    window.addEventListener('resize', () => {
       slideWidth = slidesContainer.querySelector('.slide').offsetWidth
-      slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`
+      updateSlidePosition()
    })
+   function startAutoSlide() {
+      autoInterval = setInterval(() => {
+         currentIndex++
+         moveSlide()
+      }, 4000)
+   }
+   function resetAutoSlide() {
+      clearInterval(autoInterval)
+      startAutoSlide()
+   }
+   // 초기화
    renderSlides()
    renderDots()
-   // :아래쪽_화살표: 무한스크롤 트랙 복제 (아이콘 반복)
-   const scrollTrack = document.getElementById('scrollTrack')
-   if (scrollTrack) {
-      scrollTrack.innerHTML += scrollTrack.innerHTML
-   }
+   highlightActiveSlide()
+   startAutoSlide()
 })

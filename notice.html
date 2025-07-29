@@ -6,7 +6,7 @@
       <title>MUSINSA</title>
       <link rel="stylesheet" href="./css/style.css" />
       <link rel="stylesheet" href="./css/header.css" />
-      <link rel="stylesheet" href="./css/snap.css" />
+      <link rel="stylesheet" href="./css/notice.css" />
       <link rel="stylesheet" href="./css/footer.css" />
    </head>
    <body>
@@ -54,18 +54,31 @@
          <!-- 모바일 헤더 -->
          <div class="mobile-header">
             <div class="top_header">
-               <p style="font-size: 16px; font-weight: 600">SNAP</p>
+               <p id="sectionTitle" style="font-size: 16px">알림</p>
                <div>
-                  <a href="notice.html" class="mob-bell-btn">
-                     <img src="./images/bk_bell_icon.png" alt="알림" />
+                  <a href="home.html" class="mob-home-btn">
+                     <img src="./images/e_home_icon.png" alt="홈" />
                   </a>
                   <a href="search.html" class="mob-search-btn">
                      <img src="./images/click_pc_search.png" alt="모바일검색" />
                   </a>
-                  <a href="mypage.html">
-                     <div class="mob-profile"></div>
+                  <a href="cart.html" class="mob-cart-btn">
+                     <img src="./images/mob_cart_icon.png" alt="장바구니" />
                   </a>
                </div>
+            </div>
+            <div class="like-tab">
+               <ul class="like-menu-category">
+                  <li class="active" data-type="전체">전체</li>
+                  <li data-type="주문배송">주문배송</li>
+                  <li data-type="재입고">재입고</li>
+                  <li data-type="이벤트">이벤트</li>
+                  <li data-type="혜택">혜택</li>
+                  <li data-type="발매">발매</li>
+                  <li data-type="스냅">스냅</li>
+                  <li data-type="후기">후기</li>
+                  <li data-type="스냅">스냅</li>
+               </ul>
             </div>
          </div>
          <!-- 메뉴 모달 -->
@@ -85,7 +98,55 @@
                </div>
             </div>
          </div>
-         <main></main>
+         <main>
+            <section class="notice-section">
+               <div class="title">
+                  <h2>NOTICE</h2>
+               </div>
+               <div class="notice-list">
+                  <a href="#">
+                     <img src="./images/example.png" alt="재입고" />
+                     <div>
+                        <p>재입고</p>
+                        <p>상품명이 입고 되었습니다.</p>
+                        <p>상품주문 하러가기</p>
+                     </div>
+                  </a>
+                  <a href="#">
+                     <img src="./images/배송.png" alt="배송출발" />
+                     <div>
+                        <p>배송 출발</p>
+                        <p>상품명이 출발 하였습니다. CJ대한통운 00000000000</p>
+                        <p>배송현황 확인하기</p>
+                     </div>
+                  </a>
+                  <a href="#">
+                     <img src="./images/문의.png" alt="문의사항" />
+                     <div>
+                        <p>1:1 문의</p>
+                        <p>00님의 문의사항 답변이 완료되었습니다.</p>
+                        <p>고객센터 바로가기</p>
+                     </div>
+                  </a>
+                  <a href="#">
+                     <img src="./images/쿠폰.png" alt="혜택쿠폰" />
+                     <div>
+                        <p>혜택 / 쿠폰</p>
+                        <p>가입을 축하드립니다! 무신사 첫 가입 할인 쿠폰 20%이 발급되었습니다.</p>
+                        <p>쿠폰함 바로가기</p>
+                     </div>
+                  </a>
+                  <a href="#">
+                     <img src="./images/카드.png" alt="결제완료" />
+                     <div>
+                        <p>결제완료</p>
+                        <p>판매자가 상품준비중입니다.</p>
+                        <p>배송현황 확인하기</p>
+                     </div>
+                  </a>
+               </div>
+            </section>
+         </main>
          <!-- 모바일 하단 카테고리 바 -->
          <div id="category-bar">
             <div id="mobileCategoryBtn">
@@ -181,7 +242,6 @@
       </div>
 
       <script type="module" src="./js/menu.js"></script>
-      <!-- <script type="module" src="./js/snap.js"></script> -->
-      <script src="./js/footer.js"></script>
+      <script type="module" src="./js/footer.js"></script>
    </body>
 </html>
